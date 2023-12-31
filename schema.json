@@ -1,0 +1,74 @@
+[
+    {
+        "name": "send_pix",
+        "description": "Send a Pix payment",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "amount_brl": {
+                    "type": "number",
+                    "description": "The amount of Brazilian Reals the user wants to send."
+                },
+                "key": {
+                    "type": "string",
+                    "description": "The key to send the pix to. It can be a CPF, CNPJ, email, Brazillian mobile phone number and a random key (formatted as a UUID)."
+                },
+                "message": {
+                    "type": "string",
+                    "description": "A note a user can send together with the payment. If the user wants to send a note, make sure to translate the user's message to be sent in the first person, rather than a pure copy of what the user suggests."
+                }
+            },
+            "required": [
+                "amount_brl",
+                "key"
+            ]
+        }
+    },
+    {
+        "name": "execute_trade",
+        "description": "Execute a trade between two different assets.",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "source_asset": {
+                    "type": "string",
+                    "enum": [
+                        "BTC",
+                        "USDT",
+                        "BRL"
+                    ],
+                    "description": "The asset the user is selling in this trade."
+                },
+                "target_asset": {
+                    "type": "string",
+                    "enum": [
+                        "BTC",
+                        "USDT",
+                        "BRL"
+                    ],
+                    "description": "The asset the user is buying in this trade."
+                },
+                "amount": {
+                    "type": "number",
+                    "description": "The amount the user wants to buy or sell. It can be denominated in either the source or the target asset."
+                },
+                "input_currency": {
+                    "type": "string",
+                    "enum": [
+                        "BTC",
+                        "SATS",
+                        "USDT",
+                        "BRL"
+                    ],
+                    "description": "The currency that the user is denonimating his trade. SATS is the minimum unit of a BTC, 100 million sats equals 1 BTC."
+                }
+            },
+            "required": [
+                "source_asset",
+                "target_asset",
+                "amount",
+                "input_currency"
+            ]
+        }
+    }
+]

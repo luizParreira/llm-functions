@@ -1,0 +1,20 @@
+workspace = { members = ["llm-functions-examples"] }
+[package]
+name = "llm-functions"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+serde = { version = "1.0.115", features = ["std", "derive"], default-features = false }
+serde_json = { version = "1.0.94", default-features = false }
+tokio = { version = "1.12.0", features = ["time", "sync", "macros", "fs", "rt", "signal"], default-features = false }
+hf-hub = { version = "0.3.2", features = ["tokio"] }
+candle-nn= { version = "0.3.2", features = ["accelerate"] }
+candle-transformers = { version = "0.3.2", features = ["accelerate"] }
+tokenizers = "0.15.0"
+anyhow = "1.0.77"
+candle-core = { version = "0.3.2", features = ["accelerate"] }
+tracing-chrome = "0.7.1"
+tracing-subscriber = "0.3.18"
